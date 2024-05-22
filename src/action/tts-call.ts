@@ -18,7 +18,7 @@ export const ttsCall = createAction({
       displayName: 'Message Body',
       required: true
     }),
-    to: Property.Array({
+    to: Property.ShortText({
       description: 'The phone number for calling',
       displayName: 'To',
       required: true
