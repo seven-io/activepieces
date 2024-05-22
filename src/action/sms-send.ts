@@ -9,6 +9,10 @@ export const smsSend = createAction({
   description: 'Send a new SMS message',
   displayName: 'Send SMS',
   props: {
+    delay: Property.DateTime({
+      displayName: 'Delay',
+      required: false
+    }),
     flash: Property.Checkbox({
       displayName: 'Flash SMS',
       required: false
@@ -29,10 +33,11 @@ export const smsSend = createAction({
     })
   },
   async run(context) {
-    const { flash, from, text, to } = context.propsValue;
+    const { delay, flash, from, text, to } = context.propsValue;
 
     return await callSevenApi({
       body: {
+        delay: delay ? new Date(delay).toISOString().replace('T', ' ').substring(0, 19) : undefined,
         flash,
         from,
         text,
