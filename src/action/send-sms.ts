@@ -9,6 +9,10 @@ export const sevenSendSms = createAction({
   description: 'Send a new SMS message',
   displayName: 'Send SMS',
   props: {
+    flash: Property.Checkbox({
+      displayName: 'Flash SMS',
+      required: false
+    }),
     from: Property.ShortText({
       displayName: 'From',
       required: false
@@ -25,10 +29,11 @@ export const sevenSendSms = createAction({
     })
   },
   async run(context) {
-    const { text, to, from } = context.propsValue;
+    const { flash, from, text, to, } = context.propsValue;
 
     return await callSevenApi({
       body: {
+        flash,
         from,
         text,
         to
