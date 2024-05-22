@@ -21,7 +21,7 @@ export const smsSend = createAction({
       displayName: 'From',
       required: false
     }),
-    text: Property.ShortText({
+    text: Property.LongText({
       description: 'The body of the message to send',
       displayName: 'Message Body',
       required: true

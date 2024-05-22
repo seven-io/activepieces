@@ -13,7 +13,7 @@ export const ttsCall = createAction({
       displayName: 'From',
       required: false
     }),
-    text: Property.ShortText({
+    text: Property.LongText({
       description: 'The message to convert to speech',
       displayName: 'Message Body',
       required: true
