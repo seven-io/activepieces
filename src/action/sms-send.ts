@@ -1,7 +1,7 @@
 import { createAction, Property } from '@activepieces/pieces-framework';
-import { callSevenApi } from '../common';
 import { HttpMethod } from '@activepieces/pieces-common';
 import { sevenAuth } from '../index';
+import { callSevenApi } from '../common';
 
 export const smsSend = createAction({
   auth: sevenAuth,
@@ -29,7 +29,7 @@ export const smsSend = createAction({
     })
   },
   async run(context) {
-    const { flash, from, text, to, } = context.propsValue;
+    const { flash, from, text, to } = context.propsValue;
 
     return await callSevenApi({
       body: {

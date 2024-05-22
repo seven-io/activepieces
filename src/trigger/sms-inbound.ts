@@ -1,18 +1,28 @@
-import {
-  createTrigger, Property,
-  TriggerStrategy
-} from '@activepieces/pieces-framework';
+import { createTrigger, Property, TriggerStrategy } from '@activepieces/pieces-framework';
 import { callSevenApi } from '../common';
 import { sevenAuth } from '../index';
 import { HttpMethod } from '@activepieces/pieces-common';
+
+interface SubscribeHookResponse {
+  id: number | null;
+  success: boolean;
+}
+
+interface UnsubscribeHookResponse {
+  success: boolean;
+}
+
+interface SevenWebhookInformation {
+  webhookId: number;
+}
 
 const triggerNameInStore = 'seven_new_sms_trigger';
 
 export const smsInbound = createTrigger({
   auth: sevenAuth,
-  name: 'new_incoming_sms',
   description: 'Triggers when a new SMS message is received',
   displayName: 'New Incoming SMS',
+  name: 'new_incoming_sms',
   props: {
     from: Property.ShortText({
       displayName: 'From',
@@ -20,15 +30,15 @@ export const smsInbound = createTrigger({
     })
   },
   sampleData: {
-    'data': {
-      'id': '681590',
-      'sender': 'SMS',
-      'system': '491771783130',
-      'text': 'Hello. I am an example for demonstrating a webhook payload.',
-      'time': '1605878104'
+    data: {
+      id: '681590',
+      sender: 'SMS',
+      system: '491771783130',
+      text: 'Hello. I am an example for demonstrating a webhook payload.',
+      time: '1605878104'
     },
-    'webhook_event': 'sms_mo',
-    'webhook_timestamp': '2020-12-02 11:55:44'
+    webhook_event: 'sms_mo',
+    webhook_timestamp: '2020-12-02 11:55:44'
   },
   type: TriggerStrategy.WEBHOOK,
   async onEnable(context) {
@@ -69,16 +79,3 @@ export const smsInbound = createTrigger({
     return [context.payload.body];
   }
 });
-
-interface SubscribeHookResponse {
-  id: number | null;
-  success: boolean;
-}
-
-interface UnsubscribeHookResponse {
-  success: boolean;
-}
-
-interface SevenWebhookInformation {
-  webhookId: number;
-}

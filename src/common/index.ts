@@ -1,7 +1,7 @@
 import {
-  httpClient,
   type HttpResponse,
-  HttpRequest
+  type HttpRequest,
+  httpClient
 } from '@activepieces/pieces-common';
 
 export const callSevenApi = async <T>(
