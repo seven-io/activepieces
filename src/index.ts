@@ -1,6 +1,7 @@
 import { createPiece, PieceAuth } from '@activepieces/pieces-framework';
 import { smsSend } from './action/sms-send';
 import { ttsCall } from './action/tts-call';
+import { lookup } from './action/lookup';
 import { smsInbound } from './trigger/sms-inbound';
 
 export const sevenAuth = PieceAuth.SecretText({
@@ -10,7 +11,7 @@ export const sevenAuth = PieceAuth.SecretText({
 });
 
 export const seven = createPiece({
-  actions: [smsSend, ttsCall],
+  actions: [smsSend, ttsCall, lookup],
   auth: sevenAuth,
   authors: ['seven-io'],
   displayName: 'seven',
