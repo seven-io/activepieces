@@ -3,6 +3,10 @@
 Official seven piece for [Activepieces](https://www.activepieces.com/)
 
 ## Installation
+### Dashboard
+Settings -> My Pieces -> Install Piece -> type in `seven`
+
+### Package Manager
 `npm i @seven.io/activepieces`
 
 ## Actions
