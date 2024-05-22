@@ -13,7 +13,8 @@ export const callSevenApi = async <T>(
     ...httpRequest,
     headers: {
       ...httpRequest.headers,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
       SentWith: 'Activepieces',
       'X-Api-Key': apiKey
     },
