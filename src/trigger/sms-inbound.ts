@@ -8,7 +8,7 @@ import { HttpMethod } from '@activepieces/pieces-common';
 
 const triggerNameInStore = 'seven_new_sms_trigger';
 
-export const sevenNewIncomingSms = createTrigger({
+export const smsInbound = createTrigger({
   auth: sevenAuth,
   name: 'new_incoming_sms',
   description: 'Triggers when a new SMS message is received',

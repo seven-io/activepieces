@@ -3,7 +3,7 @@ import { callSevenApi } from '../common';
 import { HttpMethod } from '@activepieces/pieces-common';
 import { sevenAuth } from '../index';
 
-export const sevenSendSms = createAction({
+export const smsSend = createAction({
   auth: sevenAuth,
   name: 'send_sms',
   description: 'Send a new SMS message',

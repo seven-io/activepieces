@@ -1,6 +1,7 @@
 import { createPiece, PieceAuth } from '@activepieces/pieces-framework';
-import { sevenSendSms } from './action/send-sms';
-import { sevenNewIncomingSms } from './trigger/new-incoming-sms';
+import { smsSend } from './action/sms-send';
+import { ttsCall } from './action/tts-call';
+import { smsInbound } from './trigger/sms-inbound';
 
 export const sevenAuth = PieceAuth.SecretText({
   description: 'The authentication to use to connect to seven',
@@ -9,10 +10,10 @@ export const sevenAuth = PieceAuth.SecretText({
 });
 
 export const seven = createPiece({
-  actions: [sevenSendSms],
+  actions: [smsSend, ttsCall],
   auth: sevenAuth,
   authors: ['seven-io'],
   displayName: 'seven',
   logoUrl: 'https://www.seven.io/wp-content/uploads/icon-green-bold.png',
-  triggers: [sevenNewIncomingSms]
+  triggers: [smsInbound]
 });
